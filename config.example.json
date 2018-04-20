@@ -1,0 +1,44 @@
+{
+	"threads": 2,
+
+	"proxy": {
+		"listen": "0.0.0.0:8748",
+		"clientTimeout": "3m",
+		"blockRefreshInterval": "100ms",
+		"hashrateWindow": "15m",
+		"submitHashrate": false,
+		"luckWindow": "24h",
+		"largeLuckWindow": "72h"
+	},
+
+	"frontend": {
+		"listen": "0.0.0.0:8080",
+		"login": "admin",
+		"password": ""
+	},
+
+	"upstreamCheckInterval": "5s",
+	"upstream": [
+		{
+			"pool": true,
+			"name": "EuroHash.net",
+			"url": "http://wsh-eu.eurohash.net:8888/miner/0xc285f9dc21232fe887830234631adb9544e40d31/proxy",
+			"timeout": "10s"
+		},
+		{
+			"name": "main",
+			"url": "http://127.0.0.1:8747",
+			"timeout": "10s"
+		},
+		{
+			"name": "backup",
+			"url": "http://127.0.0.2:8747",
+			"timeout": "10s"
+		}
+	],
+
+	"newrelicEnabled": false,
+	"newrelicName": "MyWiseProxy",
+	"newrelicKey": "SECRET_KEY",
+	"newrelicVerbose": false
+}
